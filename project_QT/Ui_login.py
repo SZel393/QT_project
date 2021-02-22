@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_login(object):
     def setupUi(self, login):
         login.setObjectName("login")
-        login.resize(400, 136)
+        login.resize(485, 136)
         self.gridLayout = QtWidgets.QGridLayout(login)
         self.gridLayout.setObjectName("gridLayout")
         self.buttonBox = QtWidgets.QDialogButtonBox(login)

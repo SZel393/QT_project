@@ -13,6 +13,7 @@ class Login(QDialog, Ui_login):
         self.name.setFocus(Qt.OtherFocusReason)
         self.user = ''
         self.is_teacher = 0
+        self.level = '0001'
 
     def set_connection(self, connect):
         self.cur = connect.cursor()
@@ -21,12 +22,14 @@ class Login(QDialog, Ui_login):
         if self.password.text() == '' or self.name.text() == '':
             print(':(')
             return
-        res = self.cur.execute("SELECT password, is_teacher from users WHERE name = '{}'".format(self.name.text())).fetchall()[0]
+        res = self.cur.execute("SELECT password, is_teacher, level from users WHERE name = '{}'".format(self.name.text())).fetchall()[0]
         if self.password.text() not in res:
             print(':(((')
             return
         self.user = self.name.text()
+        self.user_id = res[0]
         self.is_teacher = res[1]
+        self.level = res[-1]
         super().accept()
 
         
